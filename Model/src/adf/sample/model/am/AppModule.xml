@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.1.3.9.1"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="allEmployees"
+    ViewObjectName="adf.sample.model.vo.EmployeesView">
+    <ViewCriteriaUsage
+      Name="QueryByHireDateRange"
+      FullName="adf.sample.model.vo.EmployeesView.QueryByHireDateRange"/>
+  </ViewUsage>
+</AppModule>

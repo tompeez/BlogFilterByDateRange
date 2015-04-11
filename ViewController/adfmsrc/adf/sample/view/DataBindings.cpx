@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.56.60" id="DataBindings" SeparateXMLFiles="false"
+             Package="adf.sample.view" ClientType="Generic">
+  <pageMap>
+    <page path="/FilterByDateRange.jspx"
+          usageId="adf_sample_view_FilterByDateRangePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="adf_sample_view_FilterByDateRangePageDef"
+          path="adf.sample.view.pageDefs.FilterByDateRangePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="adf.sample.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

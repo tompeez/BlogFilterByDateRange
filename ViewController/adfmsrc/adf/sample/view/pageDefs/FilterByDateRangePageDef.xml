@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.58.21" id="FilterByDateRangePageDef"
+                Package="adf.sample.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="startDate" Type="oracle.jbo.domain.Date"/>
+      <variable Name="endDate" Type="oracle.jbo.domain.Date"/>
+    </variableIterator>
+    <iterator Binds="allEmployees" RangeSize="25"
+              DataControl="AppModuleDataControl" id="allEmployeesIterator"/>
+    <searchRegion Binds="allEmployeesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="allEmployeesQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allEmployeesIterator" id="allEmployees">
+      <nodeDefinition DefName="adf.sample.model.vo.EmployeesView"
+                      Name="allEmployees0">
+        <AttrNames>
+          <Item Value="EmployeeId"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="Email"/>
+          <Item Value="HireDate"/>
+          <Item Value="Salary"/>
+          <Item Value="DepartmentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="setHireDateRangeEnd"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setHireDateRangeEnd" IsViewObjectMethod="true"
+                  DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.allEmployees">
+      <NamedData NDName="value" NDType="oracle.jbo.domain.Date"/>
+    </methodAction>
+    <methodAction IterBinding="allEmployeesIterator" id="setHireDateRangeStart"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setHireDateRangeStart" IsViewObjectMethod="true"
+                  DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.allEmployees">
+      <NamedData NDName="value" NDType="oracle.jbo.domain.Date"/>
+    </methodAction>
+    <attributeValues IterBinding="allEmployeesIterator" id="HireDate">
+      <AttrNames>
+        <Item Value="HireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="startDate1">
+      <AttrNames>
+        <Item Value="startDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="endDate1">
+      <AttrNames>
+        <Item Value="endDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
